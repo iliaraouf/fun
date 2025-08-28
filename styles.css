@@ -57,3 +57,67 @@ body, html {
   transform: translate(-50%, -50%) scale(0.5);
   transition: opacity 1s ease, transform 1s ease;
 }
+
+/* Base styles already defined */
+
+/* Responsive adjustments */
+
+@media (max-width: 600px) {
+  .container {
+    width: 90vw;  /* almost full width on small screens */
+    height: auto;
+  }
+
+  .circle {
+    width: 100vw; /* circle max width 100% viewport width */
+    max-width: 150px; /* but don’t get bigger than original */
+    height: 100vw;
+    max-height: 150px;
+  }
+
+  .text {
+    font-size: 5vw;  /* text scales with viewport width */
+    max-font-size: 2.5rem; /* max size as original */
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    width: 250px;
+    height: 200px;
+  }
+
+  .circle {
+    width: 130px;
+    height: 130px;
+  }
+
+  .text {
+    font-size: 2rem;
+  }
+}
+
+/* Make sure text doesn’t overflow */
+.text {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+/* Center container better on small devices */
+body, html {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Optional: reduce margin/padding on very small devices */
+@media (max-width: 320px) {
+  .container {
+    width: 80vw;
+  }
+
+  .text {
+    font-size: 4vw;
+  }
+}
+
