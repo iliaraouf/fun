@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Circle to Text with Music</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container" id="container" style="display:none;">
+    <div class="circle"></div>
+    <div class="text" id="main-text">تو بدبختی</div>
+    <div class="text" id="second-text">تلاش نکن بگا رفتی دیگه</div>
+  </div>
+
+  <button id="play-btn" style="font-size: 24px; padding: 10px 20px; cursor: pointer;">
+    ▶️ شروع کن
+  </button>
+
+  <audio id="bg-music" loop>
+    <source src="/fun/02. Sharing Life.mp3" type="audio/mp3" />
+    مرورگر شما پخش موسیقی را پشتیبانی نمی‌کند.
+  </audio>
+
+  <script>
+    const playBtn = document.getElementById('play-btn');
+    const container = document.getElementById('container');
+    const music = document.getElementById('bg-music');
+    const circle = document.querySelector('.circle');
+    const mainText = document.getElementById('main-text');
+    const secondText = document.getElementById('second-text');
+
+    playBtn.addEventListener('click', () => {
+      music.play();
+      playBtn.style.display = 'none';
+      container.style.display = 'flex';
+
+      setTimeout(() => {
+        circle.classList.add('hide');
+        mainText.classList.add('show');
+      }, 2000);
+
+      mainText.addEventListener('click', () => {
+        mainText.classList.remove('show');
+        mainText.classList.add('hide-text');
+        setTimeout(() => {
+          mainText.style.display = 'none';
+          secondText.style.display = 'block';
+          setTimeout(() => {
+            secondText.classList.add('show');
+          }, 50);
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
